@@ -35,16 +35,33 @@
 // each element of array A is an integer within the range [−1,000..1,000].
 
 //Solution
-function solution(A, K) {
-  // Implement your solution here
-  for (let i = 0; i < K; i++) {
-    A.sort((a, b) => {
-      if (a === A[A.length - 1]) return -1;
-      if (b === A[A.length - 1]) return 1;
-      return 0;
-    });
-  }
 
+function solution(A, K) {
+  //A guard clause to check for the length of array & value of the no of iteration
+  if (A.length === 0 || K === 0) {
+    return A;
+  } else {
+    //Handle our iteration logic
+    for (i = 0; i < K; i++) {
+      let lastValue = A.pop();//Removes the last element in the array
+      A.unshift(lastValue);//Assigns the last element at the begining of the array
+    }
+  }
   return A;
 }
-solution([3, 4, 5, 6], 2);
+
+console.log(solution([7, 9, 5, 6], 0));
+
+
+// function solution(A, K) {
+//   // Implement your solution here
+//   for (let i = 0; i < K; i++) {
+//     A.sort((a, b) => {
+//       if (a === A[A.length - 1]) return -1;
+//       if (b === A[A.length - 1]) return 1;
+//       return 0;
+//     });
+//   }
+
+//   return A;
+// }
